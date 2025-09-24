@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This line is crucial for working on mobile phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Attendance</title>
+    <!-- Links to your CSS for styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Links to Google Fonts for a professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">📷</div>
+            <h1>Scan QR Code</h1>
+        </header>
+
+        <main class="scanner-container">
+            <!-- The video feed will appear inside this div -->
+            <div id="reader"></div>
+            
+            <!-- All status messages will be shown here -->
+            <div id="status-container">
+                <div class="status-icon"></div>
+                <p class="status-message">Initializing Camera...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- 1. The external library for QR code scanning -->
+    <script src="https://unpkg.com/html5-qrcode/html5-qrcode.min.js"></script>
+    <!-- 2. Your custom application logic -->
+    <script src="scanner.js"></script>
+</body>
+</html>
