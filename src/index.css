@@ -1,0 +1,104 @@
+/* Page background */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(to right, #bfdbfe, #e9d5ff);
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937; /* dark gray */
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+th {
+  background-color: #3b82f6; /* blue */
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb; /* gray border */
+}
+
+tr:hover {
+  background-color: #f3f4f6; /* hover gray */
+}
+
+/* Buttons */
+button {
+  padding: 6px 12px;
+  background-color: #10b981; /* green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #059669;
+}
+
+/* Analytics cards */
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card.green {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.card.red {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Alerts */
+.alerts {
+  background-color: #fef3c7; /* yellow */
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.alerts p.red {
+  color: #b91c1c;
+  font-weight: bold;
+}
+
+.alerts p.green {
+  color: #047857;
+  font-weight: bold;
+}
+
+/* Role dropdown */
+select {
+  padding: 6px 12px;
+  border-radius: 4px;
+}
