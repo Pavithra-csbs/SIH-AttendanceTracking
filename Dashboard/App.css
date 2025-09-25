@@ -1,0 +1,82 @@
+/* App.css or index.css */
+
+/* Background: mild pink + light blue gradient */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Table styles */
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.attendance-table th {
+  background: #a6c1ee;
+  color: #333;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+.attendance-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Status badges with mild colors */
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 80px;
+}
+
+.status-present {
+  background: #d4f8d4; /* mild green */
+  color: #2e7d32;
+}
+
+.status-absent {
+  background: #f8d4d4; /* mild red */
+  color: #c62828;
+}
+
+.status-onDuty {
+  background: #fff7cc; /* mild yellow */
+  color: #000; /* black text */
+}
+
+/* Alerts */
+.alert-message {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e65100;
+}
+
+/* Select dropdown */
+select {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 6px;
+  outline: none;
+}
+
+select:focus {
+  border-color: #a6c1ee;
+  box-shadow: 0 0 5px #a6c1ee;
+}
