@@ -1,0 +1,17 @@
+{
+    "python-envs.pythonProjects": [],
+    "python.analysis.extraPaths": [
+        "./venv/backend/app/app/app/backend/app/backend/app",
+        "./venv/backend/app/app/app",
+        "./venv/backend/app/app/app/backend/app",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app/qrcode_",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app/qrcode_",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app/qrcode_",
+        "./venv/backend/app",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app/qrcode_",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app/qrcode_",
+        "./venv/backend/app/app/app/backend/app/backend/app/backend/app/qrcode_"
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:venv"
+}
