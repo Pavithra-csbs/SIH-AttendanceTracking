@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Teacher Dashboard</h2>
+    <p>Click the button below to generate a new QR code for attendance.</p>
+    <button id="start-session-btn">Start New Session</button>
+    <div id="qr-container" class="hidden">
+        <h3>Scan this QR Code</h3>
+        <div id="qrcode"></div>
+        <p id="timer"></p>
+        <p id="session-token-display"></p>
+    </div>
+    <div id="message-area"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const startBtn = document.getElementById('start-session-btn');
+    const qrContainer = document.getElementById('qr-container');
+    const qrcodeDiv = document.getElementById('qrcode');
+    const timerDisplay = document.getElementById('timer');
+    const messageArea = document.getElementById('message-area');
+    const tokenDisplay = document.getElementById('session-token-display');
+    let timerInterval;
+
+    startBtn.addEventListener('click', async () => {
+        startBtn.disabled = true;
+        messageArea.textContent = 'Generating session...';
+        
+        try {
+            const response = await fetch('/api/create_session', { method: 'POST' });
+            if (!response.ok) throw new Error('Failed to create session.');
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Clear previous QR code
+                qrcodeDiv.innerHTML = '';
+                new QRCode(qrcodeDiv, {
+                    text: data.sessionToken,
+                    width: 256,
+                    height: 256,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+                tokenDisplay.textContent = `Token: ${data.sessionToken}`;
+                qrContainer.classList.remove('hidden');
+                messageArea.textContent = '';
+                startCountdown(data.expiresAt);
+            } else {
+                messageArea.textContent = 'Error: Could not start session.';
+            }
+        } catch (error) {
+            console.error('Error creating session:', error);
+            messageArea.textContent = 'An error occurred. Please try again.';
+        } finally {
+            startBtn.disabled = false;
+        }
+    });
+
+    function startCountdown(expiryTime) {
+        if (timerInterval) clearInterval(timerInterval);
+
+        const expiryDate = new Date(expiryTime);
+
+        timerInterval = setInterval(() => {
+            const now = new Date();
+            const distance = expiryDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                timerDisplay.textContent = "SESSION EXPIRED";
+                qrContainer.classList.add('hidden');
+                qrcodeDiv.innerHTML = '';
+                return;
+            }
+
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            timerDisplay.textContent = `Expires in: ${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Portal{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div id="login-section">
+        <h2>Student Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="scanner-section" class="hidden">
+        <h2 id="welcome-message"></h2>
+        <p>Point your camera at the QR code to mark your attendance.</p>
+        <div id="qr-reader"></div>
+        <button id="stop-scan-btn" class="hidden">Stop Scanning</button>
+    </div>
+    
+    <div id="message-area"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
+{% endblock %}
